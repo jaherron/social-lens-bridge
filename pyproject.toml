@@ -1,0 +1,29 @@
+[project]
+name = "social-lens-bridge"
+version = "0.1.0"
+description = "Nostr, Bluesky, and Lens bridge with Orb QR sign-in for Lens auth"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = [
+  "coincurve>=21.0.0,<22.0.0",
+  "qrcode>=8.2,<9.0",
+  "websockets>=16.0,<17.0",
+]
+
+[project.scripts]
+bridge = "social_lens_bridge.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/social_lens_bridge"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
